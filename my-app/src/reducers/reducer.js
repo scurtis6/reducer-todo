@@ -6,6 +6,6 @@ export const initialState = {
     id: 3892987589
 };
 
-export const reducer = () => {
+export const todoReducer = () => {
     return
 }
