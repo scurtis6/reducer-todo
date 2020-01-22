@@ -1,11 +1,14 @@
 import React, { useState, useReducer } from 'react';
 
-export const initialState = {
-    item: 'Learn about reducers',
+export const initialState = [{
+    todo: 'Learn about reducers',
     completed: false,
-    id: 3892987589
-};
+    id: Date.now()
+}];
 
-export const todoReducer = () => {
-    return
+export function todoReducer (state, action) {
+    console.log(state, action);
+    // switch(action.type) {
+    //     case ''
+    // }
 }
