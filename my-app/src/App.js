@@ -1,21 +1,34 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import Todo from './components/Todo';
 import { todoReducer, initialState } from './reducers/reducer';
 
 
 function App() {
-  const [state, dispatch] = useReducer(todoReducer, initialState);
-  console.log(state);
+  const [state, dispatch] = useReducer(todoReducer, initialState)
+  const [currentTodo, setCurrentTodo] = useState("");
 
-  const handleComplete = (id) => {
-    dispatch({type: "COMPLETED_TODO", payload: id})
+  console.log(state)
+
+  const addTodo = todoTask => {
+    const newTodo = {
+      item: todoTask,
+      completed: false,
+      id: Date.now()
+    };
+    dispatch({type: "ADD_TODO", payload: newTodo})
   }
+
+  const handleComplete = id => {
+    dispatch({type:"COMPLETED_TODO", id: id})
+  }
+
   return (
     <div className="App">
-      <TodoList state={state} handleComplete={handleComplete}/>
-      <TodoForm />
+      <h2>This is a Todo list!</h2>
+      <Todo state={state} dispatch={dispatch} handleComplete={handleComplete} />
+      <TodoForm state={state} dispatch={dispatch} addTodo={addTodo} />
     </div>
   );
 }

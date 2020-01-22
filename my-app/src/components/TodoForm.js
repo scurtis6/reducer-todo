@@ -1,29 +1,24 @@
-import React, { useState, useReducer } from 'react';
-import { todoReducer, initialState } from '../reducers/reducer';
-import TodoList from './TodoList';
+import React, {useState} from 'react';
 
-function TodoForm (props) {
-    // const [state, dispatch] = useReducer(todoReducer, initialState);
-    // const [newTodoText, setNewTodoText] = useState('');
-    console.log(props);
-   
-    return(
-        <div className="todo-form">
-            {/* <h1>{state.item}</h1> */}
-            <form>
-                <label htmlFor='todo'>Add New Todo:</label>
-                <input 
-                id='todo'
-                name='todo'
-                type='text'
-                placeholder='Add ToDo'
-                 />
-                 {/* <button>Add</button>
-                 <button>Edit</button>
-                 <button>Delete</button> */}
-            </form>
-        </div>
-    )
-}
+const Todo = props => {
+    const [info, setInfo] = useState('')
+    console.log(props)
+    
+    const handleChanges = (event) => {
+        setInfo(event.target.value)
+    }
+      return (
+          <div>
+              <form onSubmit={event => {
+                  event.preventDefault();
+                  props.addTodo(info);
+                  setInfo('')
+              }}>
+                <label>Add New ToDo: <input name="todo" placeholder='add new todo here' onChange={handleChanges} value={info} /> </label>
+                <button>Add</button>
+              </form>
+          </div>
+      )
+  }
 
-export default TodoForm;
+export default Todo;

@@ -1,12 +1,20 @@
 import React from 'react';
 
-function Todo (props) {
-    console.log(props);
-    return (
-        <div className={`todo${props.item.completed ? ' completed' : ''}`} onClick={() => props.handleComplete(props.item.id)} >
-            <p>{props.item.todo}</p>
-        </div>
-    )
-}
+const Todo = props => {
+    console.log(props)
 
-export default Todo;
+    // const handleComplete = id => {
+    //   dispatch({type:"COMPLETED_TODO", id: id})
+    // }
+
+  return (
+    <div className='todo'>
+        {props.state.map(todo =>{
+            return <p  className={`todo_list ${todo.completed ? 'completed' : ''}`}
+            key={todo.id} id={todo.id} onClick={() => props.handleComplete(todo.id)}>{todo.item}</p>
+        })}
+    </div>
+  );
+};
+
+export default Todo; 
