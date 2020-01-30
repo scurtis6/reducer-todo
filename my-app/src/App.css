@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  background-color: darkblue;
+  color: white;
+  padding: 2% 0 5% 0;
+}
+
+.todo_list.completed {
+  text-decoration: line-through;
+  color: red;
+}
+
+.clr-btn{
+  margin-top: 4%;
+}
