@@ -29,7 +29,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h2>This is a Todo list!</h2>
+      <h2>This is a Todo list!!!</h2>
       <Todo state={state} dispatch={dispatch} handleComplete={handleComplete} />
       <TodoForm state={state} dispatch={dispatch} addTodo={addTodo} />
       <button className='clr-btn' onClick={(e) => {
